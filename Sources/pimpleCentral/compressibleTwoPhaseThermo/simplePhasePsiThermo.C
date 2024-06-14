@@ -208,6 +208,7 @@ Foam::simplePhasePsiThermo::simplePhasePsiThermo(const fvMesh& mesh, const dicti
     Pr_  = readScalar(dict.lookup("Pr"));
     rho0_= readScalar(dict.lookup("rho0"));
     p0_  = readScalar(dict.lookup("p0"));
+    T0_  = readScalar(dict.lookup("T0"));
 
     this->he_.operator= (this->he(p_,T_)());
 
@@ -256,7 +257,7 @@ void Foam::simplePhasePsiThermo::correct()
 	{
 	    forAll(pT, facei)
 	    {
-		phe[facei] = pT[facei] * Cp_;
+		phe[facei] = h(pp[facei], pT[facei]);
 	    }
 	}
 	forAll(pT, facei)
@@ -296,22 +297,24 @@ Foam::tmp<Foam::volScalarField> Foam::simplePhasePsiThermo::he
     volScalarField& he = the.ref();
     scalarField& heCells = he.ref();
     const scalarField& TCells = T.v();
+    const scalarField& pCells = p.v();
 
     forAll(heCells, celli)
     {
-	heCells[celli] =
-	Cp_ * TCells[celli];
+        heCells[celli] =
+            h(pCells[celli], TCells[celli]);
     }
 
     forAll(he.boundaryField(), patchi)
     {
 	fvPatchScalarField& hep = he.boundaryFieldRef()[patchi];
 	const scalarField&  Tp  = T_.boundaryField()[patchi];
+        const scalarField&  pp  = p_.boundaryField()[patchi];
 
 	forAll(hep, facei)
 	{
 	    hep[facei] =
-	     Cp_ * Tp[facei];
+	     h(pp[facei], Tp[facei]);
 	}
     }
 
@@ -332,7 +335,7 @@ Foam::tmp<Foam::scalarField> Foam::simplePhasePsiThermo::he
 
     forAll(T, celli)
     {
-	he[celli] = Cp_* T[celli];
+	he[celli] = h(p[celli], T[celli]);
     }
 
     return the;
@@ -352,7 +355,7 @@ Foam::tmp<Foam::scalarField> Foam::simplePhasePsiThermo::he
     forAll(T, facei)
     {
 	he[facei] =
-	    Cp_ * T[facei];
+	    h(p[facei], T[facei]);
     }
 
     return the;

@@ -125,71 +125,110 @@ Foam::compressibleTwoPhaseMixtureThermo::~compressibleTwoPhaseMixtureThermo()
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
+static void findTemperature
+(
+    Foam::scalarField& T,
+    const Foam::scalarField& p,
+    const Foam::scalarField& YLiq,
+    const Foam::scalarField& YGas,
+    const Foam::scalarField& href,
+    const Foam::simplePhasePsiThermo& liq,
+    const Foam::simplePhasePsiThermo& gas
+)
+{
+    static const Foam::scalar EpsilonH = 1.0e-5;
+    Foam::scalar F     = 0.0;
+    Foam::scalar dFdT  = 0.0;
+    Foam::scalar Cpm   = 0.0;
+    Foam::scalar deltaH= 0.0;
+
+    forAll(T, elemi)
+    {
+        Cpm =  liq.Cp(p[elemi], T[elemi]) * YLiq[elemi] +
+            gas.Cp(p[elemi], T[elemi]) * YGas[elemi];
+
+        deltaH = YLiq[elemi]*liq.deltah(p[elemi], T[elemi], href[elemi])
+            + YGas[elemi]*gas.deltah(p[elemi], T[elemi], href[elemi]);
+        F = deltaH;
+        dFdT = Cpm;
+
+        while (Foam::mag(deltaH) >= EpsilonH)
+        {
+            T[elemi] = T[elemi] - F / dFdT;
+
+            Cpm =  liq.Cp(p[elemi], T[elemi]) * YLiq[elemi] + gas.Cp(p[elemi], T[elemi]) * YGas[elemi];
+            deltaH = YLiq[elemi]*liq.deltah(p[elemi], T[elemi], href[elemi])
+            + YGas[elemi]*gas.deltah(p[elemi], T[elemi], href[elemi]);
+            F = deltaH;
+            dFdT = Cpm;
+        }
+    }
+}
+
 void Foam::compressibleTwoPhaseMixtureThermo::correct()
 {
     //update temperature and heat capacities of liquid and gas
 
-    const scalar epsilonH = 1.0e-5;
-
-    forAll(T_, celli)
-    {
-        scalar CpLiq = thermoLiq_->Cp(p_[celli], T_[celli]);
-        scalar CpGas = thermoGas_->Cp(p_[celli], T_[celli]);
-        scalar Cpm =  CpLiq * YLiq()[celli] + CpGas * YGas()[celli];
-
-        scalar deltaH = Cpm * T_[celli] - he_[celli];
-        scalar F = deltaH * deltaH;
-        scalar dFdT = 2.0 * Cpm * deltaH;
-
-        while (mag(deltaH) >= epsilonH)
-        {
-            T_[celli] = T_[celli] - F / dFdT;
-
-            CpLiq = thermoLiq_->Cp(p_[celli], T_[celli]);
-            CpGas = thermoGas_->Cp(p_[celli], T_[celli]);
-            Cpm =  CpLiq * YLiq()[celli] + CpGas * YGas()[celli];
-
-            deltaH = Cpm * T_[celli] - he_[celli];
-            F = deltaH * deltaH;
-            dFdT = 2.0 * Cpm * deltaH;
-        }
-    }
+    findTemperature
+    (
+        T_.primitiveFieldRef(),
+        p_.primitiveField(),
+        YLiq_.primitiveField(),
+        YGas_.primitiveField(),
+        he_.primitiveField(),
+        thermoLiq_(),
+        thermoGas_()
+    );
 
     forAll(T_.boundaryField(), patchi)
     {
-	fvPatchScalarField&       pT  = T_.boundaryFieldRef()[patchi];
-	const fvPatchScalarField& pp  = p_.boundaryField()[patchi];
-	fvPatchScalarField&      hep  = he_.boundaryFieldRef()[patchi];
+        fvPatchScalarField&       pT  = T_.boundaryFieldRef()[patchi];
+        const fvPatchScalarField& pp  = p_.boundaryField()[patchi];
+        fvPatchScalarField&       phe = he_.boundaryFieldRef()[patchi];
+        const fvPatchScalarField& pyl = YLiq_.boundaryField()[patchi];
+        const fvPatchScalarField& pyg = YGas_.boundaryField()[patchi];
 
-	if (pT.fixesValue())
-	{
-	    hep == YLiq().boundaryField()[patchi] * thermoLiq_->he(pp, pT, patchi) +
-		    YGas().boundaryField()[patchi] * thermoGas_->he(pp, pT, patchi);
-	}
-	else
-	{
-	    forAll(pT, facei)
-	    {
-		scalar CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
-		scalar CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
-		scalar Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
 
-                scalar deltaH = Cpm * pT[facei] - hep[facei];
-		scalar F = deltaH * deltaH;
-		scalar dFdT = 2.0 * Cpm * deltaH;
-		while (mag(deltaH) >= epsilonH)
-		{
-		    pT[facei] = pT[facei] - F / dFdT;
+        if (pT.fixesValue())
+        {
+            phe == YLiq().boundaryField()[patchi] * thermoLiq_->he(pp, pT, patchi) +
+                YGas().boundaryField()[patchi] * thermoGas_->he(pp, pT, patchi);
+        }
+        else
+        {
 
-		    CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
-		    CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
-		    Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
-
-		    deltaH = Cpm * pT[facei] - hep[facei];
-		    F = deltaH * deltaH;
-		    dFdT = 2.0 * Cpm * deltaH;
-		}
-	    }
+            findTemperature
+            (
+                pT,
+                pp,
+                pyl,
+                pyg,
+                phe,
+                thermoLiq_(),
+                thermoGas_()
+            );
+//	    forAll(pT, facei)
+//	    {
+//		scalar CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
+//		scalar CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
+//		scalar Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
+//
+//                scalar deltaH = Cpm * pT[facei] - hep[facei];
+//		scalar F = deltaH * deltaH;
+//		scalar dFdT = 2.0 * Cpm * deltaH;
+//		while (mag(deltaH) >= epsilonH)
+//		{
+//		    pT[facei] = pT[facei] - F / dFdT;
+//
+//		    CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
+//		    CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
+//		    Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
+//
+//		    deltaH = Cpm * pT[facei] - hep[facei];
+//		    F = deltaH * deltaH;
+//		    dFdT = 2.0 * Cpm * deltaH;
+//		}
+//	    }
 	}
     }
 

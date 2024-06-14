@@ -49,9 +49,19 @@ class simplePhasePsiThermo
 
 public:
 
-    scalar Cp(const scalar& p, const scalar& T)
+    inline scalar Cp(const scalar& p, const scalar& T) const
     {
-	return Cp_;
+        return Cp_;
+    }
+
+    inline scalar h(const scalar& p, const scalar& T) const
+    {
+        return Cp_*(T - T0_);
+    }
+
+    inline scalar deltah(const scalar& p, const scalar& T, const scalar& href) const
+    {
+        return h(p,T) - href;
     }
 
 private:
@@ -113,6 +123,9 @@ protected:
 
     //-
     scalar p0_;
+
+    //-
+    scalar T0_;
 
 protected:
 

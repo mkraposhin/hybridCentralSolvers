@@ -113,12 +113,18 @@ int main(int argc, char *argv[])
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
 
-        // --- Predict velocity for new time step
-        #include "massEqn.H"
-
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
+
+            // --- Predict velocity for new time step
+            #include "massEqn.H"
+            //volScalarField rhom("rhom", 1.0*rho);
+            //rhom.write();
+            //Info << "phi = " << phi << endl;
+            //volScalarField divPhiDt("divPhiDt", fvc::div(phi)*runTime.deltaT());
+            //divPhiDt.write();
+            
 
             if (pimple.turbCorr())
             {

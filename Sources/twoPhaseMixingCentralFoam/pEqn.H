@@ -14,6 +14,29 @@ HbyA = UEqn.H() * rAU;
     #include "updateCentralWeights.H"
     #include "rhoUpdateCentralFields.H"
 
+    surfaceScalarField rho_nei = fvc::interpolate(rho, nei, "reconstruct(rho)");
+    surfaceScalarField rho_own = fvc::interpolate(rho, own, "reconstruct(rho)");
+    surfaceScalarField rhoLiq_nei = fvc::interpolate(thermo.thermoLiq().rho(), nei, "reconstruct(rho)");
+    surfaceScalarField rhoLiq_own = fvc::interpolate(thermo.thermoLiq().rho(), own, "reconstruct(rho)");
+    surfaceScalarField rhoGas_nei = fvc::interpolate(thermo.thermoGas().rho(), nei, "reconstruct(rho)");
+    surfaceScalarField rhoGas_own = fvc::interpolate(thermo.thermoGas().rho(), own, "reconstruct(rho)");
+    surfaceScalarField YbarLiqf   = min(max(fvc::interpolate(YbarLiq, "reconstruct(YbarLiq)"),0.0),1.0);
+    surfaceScalarField YbarGasf   = 1.0 - YbarLiqf;
+
+    surfaceScalarField deltaRho_nei = ((YbarLiqf*rhoLiq_nei + YbarGasf*rhoGas_nei) - rho_nei)*aSf;
+    surfaceScalarField deltaRho_own = (rho_own - (YbarLiqf*rhoLiq_own + YbarGasf*rhoGas_own))*aSf;
+    //surfaceScalarField deltaRho_nei = -rhoHat_nei*aSf;
+    //surfaceScalarField deltaRho_own =  rhoHat_own*aSf;
+    surfaceScalarField deltaRho_tot = deltaRho_nei + deltaRho_own;
+    //volScalarField divDeltaRho = fvc::div(deltaRho_tot);
+    //divDeltaRho.rename("divDeltaRho");
+    //divDeltaRho.write();
+    //volScalarField divPhiRhoHat = fvc::div(phiRhoHat_own) + fvc::div(phiRhoHat_nei);
+    //divPhiRhoHat.rename("divPhiRhoHat");
+    //divPhiRhoHat.write();
+    phiRhoHat_own += deltaRho_own;
+    phiRhoHat_nei += deltaRho_nei;
+
     while (pimple.correctNonOrthogonal())
     {
         fvScalarMatrix pEqn_own
@@ -32,9 +55,20 @@ HbyA = UEqn.H() * rAU;
             +
             fvc::ddt(rhoHat)
             +
+            //psi.oldTime()*fvm::ddt(p)+
             pEqn_own
             +
             pEqn_nei
+            //+
+            //fvc::div(deltaRho_tot)
+            //-
+            //thermo.thermoLiq().rho()*(fvc::ddt(YbarLiq) + (U & fvc::grad(YbarLiq)))
+            //-
+            //thermo.thermoGas().rho()*(fvc::ddt(YbarGas) + (U & fvc::grad(YbarGas)))
+            //-
+            //rhoHat * (U & fvc::grad(YLiq))
+            //-
+            //rhoHat * fvc::ddt(YLiq)
             ==
             fvOptions(psi,p,rho.name())
         );
@@ -47,7 +81,7 @@ HbyA = UEqn.H() * rAU;
         {
             phi_own = pEqn_own.flux() + phiRhoHat_own;
             phi_nei = pEqn_nei.flux() + phiRhoHat_nei;
-            phi = phi_own + phi_nei;                  
+            phi = phi_own + phi_nei;
         }
     }
     
@@ -66,13 +100,18 @@ fvOptions.correct(U);
 Info << "max(mag(U)): " << max(mag(U)).value() << endl;
 Info << "max/min p: " << max(p).value() << "/" << min(p).value() << endl;
 
-p = max(p, pMin);
+//p = max(p, pMin);
 thermo.correctRealDensities();
 rhoT = 1.0 / (YLiq / thermo.thermoLiq().rho() + YGas / thermo.thermoGas().rho());
+//rhoT = rhoHat + psi*p;
 #include "massEqn.H"
 
 #include "centralContinuityErrs.H"
 rho = rhoT;
+
+//volScalarField ddtRho(fvc::ddt(rho));
+//ddtRho.rename("ddtRho");
+//ddtRho.write();
 
 rho_own = fvc::interpolate(rho, own, "reconstruct(rho)");
 rho_nei = fvc::interpolate(rho, nei, "reconstruct(rho)");
