@@ -207,29 +207,7 @@ void Foam::compressibleTwoPhaseMixtureThermo::correct()
                 thermoLiq_(),
                 thermoGas_()
             );
-//	    forAll(pT, facei)
-//	    {
-//		scalar CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
-//		scalar CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
-//		scalar Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
-//
-//                scalar deltaH = Cpm * pT[facei] - hep[facei];
-//		scalar F = deltaH * deltaH;
-//		scalar dFdT = 2.0 * Cpm * deltaH;
-//		while (mag(deltaH) >= epsilonH)
-//		{
-//		    pT[facei] = pT[facei] - F / dFdT;
-//
-//		    CpLiq = thermoLiq_->Cp(pp[facei], pT[facei]);
-//		    CpGas = thermoGas_->Cp(pp[facei], pT[facei]);
-//		    Cpm =  CpLiq * YLiq().boundaryField()[patchi][facei] + CpGas * YGas().boundaryField()[patchi][facei];
-//
-//		    deltaH = Cpm * pT[facei] - hep[facei];
-//		    F = deltaH * deltaH;
-//		    dFdT = 2.0 * Cpm * deltaH;
-//		}
-//	    }
-	}
+        }
     }
 
     Info << "max/min T: " << max(T_).value() << "/" << min(T_).value() << endl;
@@ -252,13 +230,20 @@ void Foam::compressibleTwoPhaseMixtureThermo::correct()
 
     volScalarField YLiqByRhoLiq (YLiq() / rhoLiq);
     volScalarField YGasByRhoGas (YGas() / rhoGas);
+    volScalarField OneByRhoSqr(Foam::pow(YLiqByRhoLiq + YGasByRhoGas,-2.0));
 
-    psi_ =
-        -Foam::pow(YLiqByRhoLiq + YGasByRhoGas,-2.0)*
-        (
-            - (YLiqByRhoLiq / rhoLiq) * psiLiq
-            - (YGasByRhoGas / rhoGas) * psiGas
-        );
+    //psiLiqEff_ = OneByRhoSqr*(YLiqByRhoLiq / rhoLiq) * psiLiq;
+    //psiGasEff_ = OneByRhoSqr*(YGasByRhoGas / rhoGas) * psiGas;
+    psiLiqEff_ = psiLiq / (rhoLiq * rhoLiq);
+    psiGasEff_ = psiGas / (rhoGas * rhoGas);
+    psi_ = (YLiq()*psiLiqEff_ + YGas()*psiGasEff_)*OneByRhoSqr;
+
+    //psi_ =
+    //    -Foam::pow(YLiqByRhoLiq + YGasByRhoGas,-2.0)*
+    //    (
+    //        - (YLiqByRhoLiq / rhoLiq) * psiLiq
+    //        - (YGasByRhoGas / rhoGas) * psiGas
+    //    );
 
     mu_ = YbarLiq()*thermoLiq_->mu() + YbarGas()*thermoGas_->mu();
     alpha_ = YbarLiq()*thermoLiq_->alpha() + YbarGas()*thermoGas_->alpha();

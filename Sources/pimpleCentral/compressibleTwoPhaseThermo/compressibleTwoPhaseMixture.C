@@ -101,6 +101,34 @@ Foam::compressibleTwoPhaseMixture::compressibleTwoPhaseMixture
         ),
         mesh,
         dimDensity
+    ),
+
+    psiLiqEff_
+    (
+        IOobject
+        (
+            "thermo:psiLiqEff",
+            mesh.time().timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimTime*dimTime/(dimLength*dimLength)/(dimDensity*dimDensity)
+    ),
+
+    psiGasEff_
+    (
+        IOobject
+        (
+            "thermo:psiGasEff",
+            mesh.time().timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimTime*dimTime/(dimLength*dimLength)/(dimDensity*dimDensity)
     )
 {
     YGas_ = 1.0 - YLiq_;
@@ -111,7 +139,8 @@ Foam::compressibleTwoPhaseMixture::compressibleTwoPhaseMixture
 
 void Foam::compressibleTwoPhaseMixture::updateVolFrac(const volScalarField& rhoLiq, const volScalarField& rhoGas)
 {
-    YbarLiq_ = (YLiq_ * rhoGas / rhoLiq) / (1.0 - YLiq_ + YLiq_ * rhoGas / rhoLiq);
+    //YbarLiq_ = (YLiq_ * rhoGas / rhoLiq) / (1.0 - YLiq_ + YLiq_ * rhoGas / rhoLiq);
+    YbarLiq_ = YLiq_ * rhoEff_ / rhoLiq;
     YbarGas_ = 1.0 - YbarLiq_;
 }
 

@@ -12,13 +12,13 @@
             phiv_own    = (fvc::interpolate(rho*U, own, "reconstruct(U)") / rho_own) & mesh.Sf();
             phiv_nei    = (fvc::interpolate(rho*U, nei, "reconstruct(U)") / rho_nei) & mesh.Sf();
         }
-        
+
         if (mesh.moving())
         {
             phiv_own   -= mesh_phi;
             phiv_nei   -= mesh_phi;
         }
-        
+
         c           = sqrt(thermo.Cp()/thermo.Cv() / psi);
         cf_own      = fvc::interpolate(c, own, "reconstruct(psi)");
         cf_nei      = fvc::interpolate(c, nei, "reconstruct(psi)");
@@ -27,10 +27,10 @@
         cSf_own.setOriented(true);
         cSf_nei     = cf_nei * mesh.magSf();
         cSf_nei.setOriented(true);
-        
+
         ap = max(max(phiv_own + cSf_own, phiv_nei + cSf_nei), v_zero);
         am = min(min(phiv_own - cSf_own, phiv_nei - cSf_nei), v_zero);
-        
+
         if (fluxScheme == "Kurganov")
         {
             alpha_own   = ap/(ap - am);

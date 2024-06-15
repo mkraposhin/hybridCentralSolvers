@@ -76,6 +76,11 @@ protected:
         //-
         volScalarField rhoEff_;
 
+        //-
+        volScalarField psiLiqEff_;
+
+        //-
+        volScalarField psiGasEff_;
 
 public:
 
@@ -160,6 +165,16 @@ public:
         volScalarField& rhoEff()
         {
             return rhoEff_;
+        }
+
+        const volScalarField& psiLiqEff() const
+        {
+            return psiLiqEff_;
+        }
+
+        const volScalarField& psiGasEff() const
+        {
+            return psiGasEff_;
         }
 };
 

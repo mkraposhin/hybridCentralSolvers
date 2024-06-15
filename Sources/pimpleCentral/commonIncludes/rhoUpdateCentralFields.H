@@ -42,6 +42,9 @@
     
     phid_own      = aphiv_own * psi_own;
     phid_nei      = aphiv_nei * psi_nei;
+//    phid_own      = (alpha_own * aphiv_own - aSf) * psi_own;
+//    phid_nei      = (alpha_nei * aphiv_nei + aSf)* psi_nei;
+
     
     phiRhoHat_own = aphiv_own * rhoHat_own;
     phiRhoHat_nei = aphiv_nei * rhoHat_nei;

@@ -42,22 +42,22 @@ lambdaCoeffs.primitiveFieldRef() = 1.0;
     
     #warning "change call to fvOptions to compressible"
     
-//    fvScalarMatrix SuSp
-//    (
-//        fvOptions(rho,YLiq)
-//    );
+    fvScalarMatrix SuSp
+    (
+        fvOptions(rho,YLiq)
+    );
     
-//    mulesWithDiffusionImplicitLimiter
-//    (
-//        rho,
-//        YLiq,
-//        phi,
-//        allFacesLambda,
-//        rhoPhiYCorr,
-//        liqDiffusionFlux,
-//        mDiffC,
-//        SuSp
-//    );
+    mulesWithDiffusionImplicitLimiter
+    (
+        rho,
+        YLiq,
+        phi,
+        allFacesLambda,
+        rhoPhiYCorr,
+        liqDiffusionFlux,
+        mDiffC,
+        SuSp
+    );
 
     upwind<scalar> UDs(mesh, phi);
 
@@ -109,6 +109,24 @@ lambdaCoeffs.primitiveFieldRef() = 1.0;
     //account for diffusion in enthalpy equation
     centralSurfaceFlux =
         centralSurfaceFluxBD + lambdaCoeffs*(centralSurfaceFlux - centralSurfaceFluxBD);
+
+    //fvScalarMatrix YLiqEqn
+    //(
+    //    fvm::ddt(rho,YLiq)
+    //    +
+    //    fvc::div(centralSurfaceFlux)
+        //fv::gaussConvectionScheme<scalar>(mesh, phi, UDs).fvcDiv(phi, YLiq)
+        //+
+        //fv::gaussConvectionScheme<scalar>(mesh, phi, UDs).fvmDiv(phi, YLiq)
+        //+
+        //fvc::div(lambdaCoeffs * rhoPhiYCorr)
+        //==
+        //SuSp
+    //);
+    
+    //YLiqEqn.relax();
+    
+    //YLiqEqn.solve(mesh.solver(YLiq.name()));
 
     liqDiffusionFlux = -
         (
