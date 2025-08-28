@@ -50,6 +50,8 @@ Description
 #include "kappaFunction.H"
 #include "correctCentralACMIInterpolation.H"
 #include "centralMULES.H"
+#include "updateSonicSpeedOnFaces.H"
+#include "KnpTemplates.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -29,6 +29,18 @@ for (label cmptIdx=0; cmptIdx < Y.size(); cmptIdx++)
         )
     );
 }
+
+surfaceScalarField W_own
+(
+    "W_own",
+    fvc::interpolate(W, own, "reconstruct(" + W.name() + ")")
+);
+surfaceScalarField W_nei
+(
+    "W_nei",
+    fvc::interpolate(W, own, "reconstruct(" + W.name() + ")")
+);
+
 //
 // END-OF-FILE
 //
