@@ -110,6 +110,8 @@ upwind<scalar> UDsNei(mesh, phi_nei);
      * Solve for components
      *
      */
+    diffusiveFlux[inertIndex].boundaryFieldRef() = 0.0;
+    diffusiveFlux[inertIndex].primitiveFieldRef() = 0.0;
     forAll(Y, iCmpt)
     {
         volScalarField& Yi = Y[iCmpt];
