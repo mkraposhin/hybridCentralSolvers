@@ -50,6 +50,8 @@ Description
 #include "kappaFunction.H"
 #include "correctCentralACMIInterpolation.H"
 #include "centralMULES.H"
+#include "updateSonicSpeedOnFaces.H"
+#include "KnpTemplates.H"
 
 #include "cloudMacros.H"
 
@@ -77,6 +79,7 @@ int main(int argc, char *argv[])
     #include "createRDeltaTVariables.H"
     #include "createTimeControls.H"
     #include "createFields.H"
+    #include "readScNumbers.H"
     #include "readAdditionalPimpleControl.H"
     #include "createCommonCentralFields.H"
 

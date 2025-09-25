@@ -7,7 +7,7 @@
         +
         fvm::div(phi_nei,h)
     );
-        
+
     /*
      *
      * Diffusive fluxes of energy due to mass diffusion
@@ -96,6 +96,8 @@
             );
     }
 
+    #include "hExtSources.H"
+
     fvScalarMatrix hEqn
     (
         hConvImpl + fvc::div(dzetaPhi)
@@ -106,7 +108,7 @@
         +
         KSource
         +
-        reaction->Qdot()
+        hExtSources
         +
         fvOptions(rho,h)
     );

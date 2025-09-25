@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
     #include "createTimeControls.H"
     Info << "Creating fields" << endl;
     #include "createFields.H"
+    #include "readScNumbers.H"
     #include "readAdditionalPimpleControl.H"
     #include "createCommonCentralFields.H"
 

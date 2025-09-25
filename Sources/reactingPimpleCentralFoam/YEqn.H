@@ -57,17 +57,8 @@ upwind<scalar> UDsNei(mesh, phi_nei);
                     YiNeiScheme
                 )
             );
-            SuSp.set
-            (
-                iCmpt,
-                new fvScalarMatrix
-                (
-                   reaction->R(Yi)
-                    +
-                    fvOptions(rho,Yi)
-                )
-            );
-            mDCf[iCmpt] = linearInterpolate(turbulence->muEff());
+            #include "setSuSp.H"
+            mDCf[iCmpt] = linearInterpolate(turbulence->muEff() / ScNumbers[iCmpt]);
         }
         else
         {

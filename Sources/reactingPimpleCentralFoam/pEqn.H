@@ -92,6 +92,8 @@ while (pimple.correctNonOrthogonal())
     (
         fvm::div(phid_nei,p) - fvm::laplacian(Dp_nei,p)
     );
+
+    #include "mExtSources.H"
     
     fvScalarMatrix pEqn
     (
@@ -101,7 +103,7 @@ while (pimple.correctNonOrthogonal())
         +
         pEqn_nei
         ==
-        fvOptions(psi,p,rho.name())
+        mExtSources
     );
     
     fvOptions.constrain(pEqn);
