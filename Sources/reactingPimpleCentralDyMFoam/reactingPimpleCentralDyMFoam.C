@@ -51,6 +51,8 @@ Description
 #include "kappaFunction.H"
 #include "correctCentralACMIInterpolation.H"
 #include "centralMULES.H"
+#include "updateSonicSpeedOnFaces.H"
+#include "KnpTemplates.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -69,6 +71,7 @@ int main(int argc, char *argv[])
 
     Info << "Creating fields" << endl;
     #include "createFields.H"
+    #include "readScNumbers.H"
 
     Info << "Reading additional pimple controls..." << endl;
     #include "readAdditionalPimpleControl.H"
@@ -178,6 +181,9 @@ int main(int argc, char *argv[])
         if (mesh.moving() && checkMeshCourantNo)
         {
             #include "centralMeshCourantNo.H"
+        }
+        if (mesh.changing())
+        {
             #include "markBadQualityCells.H"
         }
 
