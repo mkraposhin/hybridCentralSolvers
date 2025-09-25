@@ -181,6 +181,9 @@ int main(int argc, char *argv[])
         if (mesh.moving() && checkMeshCourantNo)
         {
             #include "centralMeshCourantNo.H"
+        }
+        if (mesh.changing())
+        {
             #include "markBadQualityCells.H"
         }
 
