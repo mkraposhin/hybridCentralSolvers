@@ -1,10 +1,12 @@
-#ifndef Update_Sonic_Speed_On_Faces_H
-#define Update_Sonic_Speed_On_Faces_H
+#ifndef Gas_Mixture_Update_Sonic_Speed_On_Faces_H
+#define Gas_Mixture_Update_Sonic_Speed_On_Faces_H
 
-template<typename ThermoT>
+#include "updateSonicSpeedOnFaces.H"
+
+template<>
 void UpdateSonicSpeedOnFaces
 (
-    ThermoT &thermo,
+    psiReactionThermo &thermo,
     const surfaceScalarField &own,
     const surfaceScalarField &nei,
     const surfaceScalarField &p_own,

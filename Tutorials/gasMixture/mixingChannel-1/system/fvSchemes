@@ -73,6 +73,7 @@ interpolationSchemes
     reconstruct(rho*U)		$defaultAdvSchemeV;
     reconstruct(Dp)		$defaultAdvScheme;
     reconstruct(W)		$defaultAdvScheme;
+    reconstruct(Rm)		$defaultAdvScheme;
 }
 
 snGradSchemes

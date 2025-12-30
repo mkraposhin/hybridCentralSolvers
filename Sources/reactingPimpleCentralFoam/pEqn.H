@@ -3,8 +3,10 @@ HbyA = UEqn.H() * rAU;
 HbyA.boundaryFieldRef() == U.boundaryField();
 
 W = rho*Rm;
-
-surfaceScalarField Rmf = linearInterpolate(Rm);
+Rmf = fvc::interpolate(Rm, phi, "reconstruct(psi)");
+// Actually, Rmf must be calculated as weighted harmonic
+// average:
+// 1/Rmf = sum(Yif/Ri)
 
 UpdateSonicSpeedOnFaces
 (

@@ -50,8 +50,8 @@ Description
 #include "kappaFunction.H"
 #include "correctCentralACMIInterpolation.H"
 #include "centralMULES.H"
-#include "updateSonicSpeedOnFaces.H"
 #include "KnpTemplates.H"
+#include "gasMixtureUpdateSonicSpeedOnFaces.H"
 
 #include "cloudMacros.H"
 
@@ -110,10 +110,8 @@ int main(int argc, char *argv[])
 
     #include "markBadQualityCells.H"
 
-    #include "psiUpdateCentralFields.H"
+    #include "psiInitMassFluxes.H"
     #include "updateKappa.H"
-
-    #include "updateCentralWeights.H"
     #include "createCentralCourantNo.H"
 
     if (!LTS)

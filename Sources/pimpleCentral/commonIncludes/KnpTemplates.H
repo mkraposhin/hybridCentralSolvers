@@ -78,7 +78,7 @@ inline void CalculateKnpWeights
         )   << "Unknown central flux scheme " << fluxScheme << nl << nl
             << "Valid flux schemes are:" << nl
             << "1) Kurganov" << nl
-            << "2) Tamodr" << endl;
+            << "2) Tadmor" << endl;
     }
 }
 
@@ -149,4 +149,110 @@ inline void PsiUpdateCentralFields
     phid_nei    = aphiv_nei * psi_nei;
     Dp_own = alpha_own*fvc::interpolate(W * rAU, own, "reconstruct(Dp)")/Rmf;
     Dp_nei = alpha_nei*fvc::interpolate(W * rAU, nei, "reconstruct(Dp)")/Rmf;
+}
+
+template <class MrfT>
+inline void RhoUpdateCentralFields
+(
+    bool noFluxWeighting,
+    MrfT& MRF,
+    const fvMesh& mesh,
+    const volScalarField& rho, // rho
+    const volScalarField& rhoHat, // rho - psi*p
+    const volVectorField& HbyA,
+    const volScalarField& rAU,
+    const volScalarField& psi,     // 1/(Rm*T)
+    const volScalarField& T,
+    const surfaceScalarField& own,
+    const surfaceScalarField& nei,
+    const surfaceScalarField& mesh_phi,
+    const surfaceScalarField& kappa,
+    const surfaceScalarField& alpha_own,
+    const surfaceScalarField& alpha_nei,
+    const surfaceScalarField& rho_own,
+    const surfaceScalarField& rho_nei,
+    const surfaceScalarField& aSf,
+    surfaceVectorField& rhoU_own,
+    surfaceVectorField& rhoU_nei,
+    surfaceScalarField& rhoHatf,
+    surfaceScalarField& rhoHat_own,
+    surfaceScalarField& rhoHat_nei,
+    surfaceScalarField& phiRhoHat_own,
+    surfaceScalarField& phiRhoHat_nei,
+    surfaceScalarField& phiv_own,
+    surfaceScalarField& phiv_nei,
+    surfaceScalarField& aphiv_own,
+    surfaceScalarField& aphiv_nei,
+    surfaceScalarField& phid_own,
+    surfaceScalarField& phid_nei,
+    surfaceScalarField& psi_own,
+    surfaceScalarField& psi_nei,
+    surfaceScalarField& psif,
+    surfaceScalarField& Dp_own,
+    surfaceScalarField& Dp_nei
+)
+{
+    psif = linearInterpolate(psi);
+    psi_own       = fvc::interpolate(psi, own, "reconstruct(psi)")*kappa
+                      + (1.0 - kappa)*psif;
+    psi_nei       = fvc::interpolate(psi, nei, "reconstruct(psi)")*kappa
+                      + (1.0 - kappa)*psif;
+    //Update fields at ACMI interfaces
+    correctCentralACMIInterpolation(psi_nei);
+    
+    rhoHatf = linearInterpolate(rhoHat);
+    rhoHat_own    = fvc::interpolate(rhoHat, own, "reconstruct(rhoHat)")*kappa
+                      + (1.0 - kappa)*rhoHatf;
+    rhoHat_nei    = fvc::interpolate(rhoHat, nei, "reconstruct(rhoHat)")*kappa
+                      + (1.0 - kappa)*rhoHatf;
+    //Update fields at ACMI interfaces
+    correctCentralACMIInterpolation(rhoHat_nei);
+    
+    if (noFluxWeighting)
+    {
+        phiv_own    = (fvc::interpolate(HbyA, own, "reconstruct(U)")) & mesh.Sf();
+        phiv_nei    = (fvc::interpolate(HbyA, nei, "reconstruct(U)")) & mesh.Sf();
+    }
+    else
+    {
+        rhoU_own      = fvc::interpolate(rho*HbyA, own, "reconstruct(U)");
+        rhoU_nei      = fvc::interpolate(rho*HbyA, nei, "reconstruct(U)");
+        phiv_own      = (rhoU_own / rho_own) & mesh.Sf();
+        phiv_nei      = (rhoU_nei / rho_nei) & mesh.Sf();
+    }
+    
+    if (mesh.moving())
+    {
+        phiv_own   -= mesh_phi;
+        phiv_nei   -= mesh_phi;
+    }
+    
+    MRF.makeRelative(phiv_own);
+    MRF.makeRelative(phiv_nei);
+    
+    aphiv_own     = alpha_own * phiv_own - aSf;
+    aphiv_nei     = alpha_nei * phiv_nei + aSf;
+    
+    phid_own      = aphiv_own * psi_own;
+    phid_nei      = aphiv_nei * psi_nei;
+    
+    phiRhoHat_own = aphiv_own * rhoHat_own;
+    phiRhoHat_nei = aphiv_nei * rhoHat_nei;
+    
+    Dp_own = alpha_own*fvc::interpolate(rho * rAU, own, "reconstruct(Dp)");
+    Dp_nei = alpha_nei*fvc::interpolate(rho * rAU, nei, "reconstruct(Dp)");
+}
+
+inline void BlendWithLinear
+(
+    const surfaceScalarField &kappa,
+    const surfaceScalarField &onemkappa,
+    surfaceScalarField &xf,
+    surfaceScalarField &x_own,
+    surfaceScalarField &x_nei
+) {
+    xf    *= onemkappa,
+    x_own *= kappa;
+    x_own += xf;
+    x_nei *= kappa;
 }
