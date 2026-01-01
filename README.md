@@ -81,9 +81,28 @@ If you want to see your research in this list, please write to [Issues](https://
 | Title | Description |
 |------|-------------|
 |[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015)| --- |
-|[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/image001.png)|
+|[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/shock-train-pattern.png)|
 |[Application of Singular Value Decomposition and Autoencoder for Supersonic Flow over Backward Facing Step](https://avestia.com/FFHMT2025_Proceedings/files/paper/FFHMT_170.pdf): **Article**|![Four singular vectors for u-component at the final time step](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-33.png)|
 |[Assessment of Multi-Fidelity Tools for the Aeropropulsion Analysis of a Small-Scale Supersonic Unmanned Aerial Vehicle](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6): **MSc thesis**|![MUFASA B. Adapted from(Fyfe, 2025)](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-23.png)|
+
+
+|[Assessment of Turbulence Modelling for Compressibility Effects in Ejector Ramjet Applications](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6) **MSc thesis**|![The distribution of turbulent kinetic energy field along the mixing tube](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-28.png)|
+
+|[Supersonic Combustion of Ethylene in a Pylon-Cavity Configuration with Curved Pylons](https://doi.org/10.1080/00102202.2025.2491102): **Article**| --- |
+
+|[Assessment of modern shock capturing schemes for all-speed flows in the OpenFOAM framework](https://arxiv.org/abs/2510.24146): **Article**| --- |
+
+|[Ejector Recirculation and Entrainment](https://doi.org/10.2514/1.B39246): **Article**| --- |
+
+|[Numerical investigation of supersonic two-component jet flow](https://doi.org/10.1063/5.0291051): **Article**|---|
+
+|[Experimental–Numerical Comparison of H2–Air Detonations: Influence of N2 Chemistry and Diffusion Effects](https://www.mdpi.com/2226-4310/12/4/297): **Article**|[Schematic illustration of the computational domain](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/aerospace-12-00297-g002.png)|
+
+|[Zamana bağlı akış alanının açık kaynak programlar ile aerodinamik incelemesi](https://doi.org/10.17341/gazimmfd.1156600): **Article**|![Turbulent flow over an airfoil sketch](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/Ekinci-Zafer.png)|
+
+|[Refractive Index Modification and Plasma Characteristics of a Femtosecond Laser-Induced Filament in Nitrogen](http://iopscience.iop.org/article/10.1088/1361-6463/adb498): **Article**|![Refractive index change for the 532 nm probing laser pulse](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/RefrIndex.png)|
+
+|[Evaluation of chemical kinetic models for simulations of hydrogen detonations by comparison with experimental data](https://www.sciencedirect.com/science/article/pii/S2666352X2400061X): **Article**|![thermicity peak](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/1-s2.0-S2666352X2400061X-gr12.jpg)|
 
 
 ## <p align="center"> >>>>> 2024 <<<<<  </p>
