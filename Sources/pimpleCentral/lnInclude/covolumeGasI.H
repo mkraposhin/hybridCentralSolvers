@@ -1,1 +1,0 @@
-../thermophysicalProperties/covolumeGas/covolumeGasI.H
