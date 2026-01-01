@@ -87,12 +87,9 @@ If you want to see your research in this list, please write to [Issues](https://
 |[Assessment of Turbulence Modelling for Compressibility Effects in Ejector Ramjet Applications](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6) **MSc thesis**|![The distribution of turbulent kinetic energy field along the mixing tube](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-28.png)|
 |[Supersonic Combustion of Ethylene in a Pylon-Cavity Configuration with Curved Pylons](https://doi.org/10.1080/00102202.2025.2491102): **Article**| --- |
 |[Assessment of modern shock capturing schemes for all-speed flows in the OpenFOAM framework](https://arxiv.org/abs/2510.24146): **Article**| --- |
-
 |[Ejector Recirculation and Entrainment](https://doi.org/10.2514/1.B39246): **Article**| --- |
-
 |[Numerical investigation of supersonic two-component jet flow](https://doi.org/10.1063/5.0291051): **Article**|---|
-
-|[Experimental–Numerical Comparison of H2–Air Detonations: Influence of N2 Chemistry and Diffusion Effects](https://www.mdpi.com/2226-4310/12/4/297): **Article**|[Schematic illustration of the computational domain](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/aerospace-12-00297-g002.png)|
+|[Experimental–Numerical Comparison of H2–Air Detonations: Influence of N2 Chemistry and Diffusion Effects](https://www.mdpi.com/2226-4310/12/4/297): **Article**|![Schematic illustration of the computational domain](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/aerospace-12-00297-g002.png)|
 
 |[Zamana bağlı akış alanının açık kaynak programlar ile aerodinamik incelemesi](https://doi.org/10.17341/gazimmfd.1156600): **Article**|![Turbulent flow over an airfoil sketch](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/Ekinci-Zafer.png)|
 
