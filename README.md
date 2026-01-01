@@ -5,7 +5,7 @@
 3. [Available OpenFOAM versions](#Available-OpenFOAM-versions)
 4. [Derived projects](#Derived-projects)
 5. [Research studies where the library was useful](#Research-studies-where-the-library-was-useful)
-6. [For citation](#For-citation)
+6. [For citations](#For-citations)
 
 # Available solvers with hybrid approximation
 [To the contents](#Contents)
@@ -49,6 +49,8 @@ The library is available for next versions of OpenFOAM:
 * OpenFOAM+ 2112 - [digitef-dev-2112](https://github.com/unicfdlab/hybridCentralSolvers/tree/digitef-dev-2112)
 * OpenFOAM+ 2212 - [digitef-dev-2212](https://github.com/unicfdlab/hybridCentralSolvers/tree/digitef-dev-2212)
 * OpenFOAM+ 2312 - [digitef-dev-2312](https://github.com/unicfdlab/hybridCentralSolvers/tree/digitef-dev-2312)
+* OpenFOAM+ 2412 - [digitef-dev-2412](https://github.com/unicfdlab/hybridCentralSolvers/tree/digitef-dev-2412)
+* OpenFOAM+ 2512 - [digitef-dev-2512](https://github.com/unicfdlab/hybridCentralSolvers/tree/digitef-dev-2512)
 
 **Latest changes and bug fixes are applied only in branches corresponding to latest version of OpenFOAM.**
 
@@ -66,9 +68,27 @@ The library or approach were used in next projects:
 
 If you want to see your research in this list, please write to [Issues](https://github.com/unicfdlab/hybridCentralSolvers/issues).
 
+## <p align="center"> >>>>> 2026 <<<<<  </p>
+| Title | Description |
+|------|-------------|
+|[Modeling of ammonia under-expanded jets for application in advanced propulsion systems](https://www.sciencedirect.com/science/article/pii/S0017931025016023): **Article**| ![Visualization of the flow in the experiment](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/1-s2.0-S0017931025016023-gr5.jpg) |
+|[Role of reaction rate uncertainties on the dynamics of two-dimensional detonation](https://www.sciencedirect.com/science/article/abs/pii/S0010218025007667): **Article**| --- |
+|[A pressure-based hybrid framework for sub-and supersonic compressible two-phase flow with non-equilibrium phase change](https://www.researchgate.net/publication/397581917_A_pressure-based_hybrid_framework_for_sub-_and_supersonic_compressible_two-phase_flow_with_non-equilibrium_phase_change): **Article**| ![The distribution of Mach number in a flash boiling jet](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-13.png)|
+
+
 ## <p align="center"> >>>>> 2025 <<<<<  </p>
 | Title | Description |
 |------|-------------|
+|[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015)| --- |
+|[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/image001.png)|
+|[Application of Singular Value Decomposition and Autoencoder for Supersonic Flow over Backward Facing Step](https://avestia.com/FFHMT2025_Proceedings/files/paper/FFHMT_170.pdf)|![Four singular vectors for u-component at the final time step](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-33.png)|
+|[Assessment of Multi-Fidelity Tools for the Aeropropulsion Analysis of a Small-Scale Supersonic Unmanned Aerial Vehicle](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6): **MSc thesis**|![MUFASA B. Adapted from(Fyfe, 2025)](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-23.png)|
+|[Assessment of Turbulence Modelling for Compressibility Effects in Ejector Ramjet Applications](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6) **MSc thesis**|![The distribution of turbulent kinetic energy field along the mixing tube](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-28.png)|
+|[Supersonic Combustion of Ethylene in a Pylon-Cavity Configuration with Curved Pylons](https://doi.org/10.1080/00102202.2025.2491102): **Article**| --- |
+|[Assessment of modern shock capturing schemes for all-speed flows in the OpenFOAM framework](https://arxiv.org/abs/2510.24146): **Article**| --- |
+|[Ejector Recirculation and Entrainment](https://doi.org/10.2514/1.B39246): **Article**| --- |
+|[Numerical investigation of supersonic two-component jet flow](https://doi.org/10.1063/5.0291051): **Article**|---|
+|[Experimental–Numerical Comparison of H2–Air Detonations: Influence of N2 Chemistry and Diffusion Effects](https://www.mdpi.com/2226-4310/12/4/297): **Article**|[Schematic illustration of the computational domain](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/aerospace-12-00297-g002.png)|
 |[Zamana bağlı akış alanının açık kaynak programlar ile aerodinamik incelemesi](https://doi.org/10.17341/gazimmfd.1156600): **Article**|![Turbulent flow over an airfoil sketch](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/Ekinci-Zafer.png)|
 |[Refractive Index Modification and Plasma Characteristics of a Femtosecond Laser-Induced Filament in Nitrogen](http://iopscience.iop.org/article/10.1088/1361-6463/adb498): **Article**|![Refractive index change for the 532 nm probing laser pulse](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/RefrIndex.png)|
 |[Evaluation of chemical kinetic models for simulations of hydrogen detonations by comparison with experimental data](https://www.sciencedirect.com/science/article/pii/S2666352X2400061X): **Article**|![thermicity peak](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/1-s2.0-S2666352X2400061X-gr12.jpg)|
@@ -76,7 +96,7 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2024 <<<<<  </p>
 | Title | Description |
 |------|-------------|
-|[Turbulent Combustion Modeling of an Ejector Ramjet Propulsion System](https://prism.ucalgary.ca/items/d01ad206-7b26-4711-8f52-231407a8bfd0): **MsC Thesis**|![Mean temperature field from RANS obtained with the default PaSR combustion mode](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/T_RANS_PASR.png)|
+|[Turbulent Combustion Modeling of an Ejector Ramjet Propulsion System](https://prism.ucalgary.ca/items/d01ad206-7b26-4711-8f52-231407a8bfd0): **MSc Thesis**|![Mean temperature field from RANS obtained with the default PaSR combustion mode](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/T_RANS_PASR.png)|
 |[Study of the mechanism of shock-induced and detonation-induced droplet breakup based on hybrid solvers](https://www.researchgate.net/publication/382754845_Study_of_the_mechanism_of_shock-induced_and_detonation-induced_droplet_breakup_based_on_hybrid_solvers): **Article**|---|
 |[Aeroacoustic Improvements during Lift-off of Launch Vehicles](https://riunet.upv.es/handle/10251/204805?show=full): **PhD Thesis**|![The duct geometry and mesh](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/duct-geom-and-mesh.png)|
 |[Validation of High Speed Reactive Flow Solver in OpenFOAM with Detailed Chemistry](https://journal.openfoam.com/index.php/ofj/article/view/125): **Article**|![Detonation cells](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/submission_resized.png)|
@@ -195,11 +215,13 @@ If you want to see your research in this list, please write to [Issues](https://
 |[Study of capabilities of hybrid scheme for advection terms approximation in mathematical models of compressible flows (in Russian)](https://ispranproceedings.elpub.ru/jour/article/view/121):  **Article** |![Liquid ring vacuum pump](https://github.com/unicfdlab/hybridCentralSolvers/blob/master/Figs/LRVP.png)|
 |[LES Discretization Methods for Unstructured Meshes Based on the Finite Volume Method](https://doi.org/10.21656/1000-0887.370228):  **Article** |![Vorticity: Flow around cylinder](https://github.com/unicfdlab/hybridCentralSolvers/blob/master/Figs/Vorticity-vs-scheme.png)|
 
-# For citation
+# For citations
 [To the contents](#Contents)
     
    When using these solvers, please cite the following works:
    * [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3878441.svg)](https://doi.org/10.5281/zenodo.3878441)
-   * [Kraposhin MV, Banholzer M, Pfitzner M, Marchevsky IK. A hybrid pressure‐based solver for nonideal single‐phase fluid flows at all speeds. Int J Numer Meth Fluids. 2018;88:79–99](https://www.researchgate.net/publication/325025590_A_hybrid_pressure-based_solver_for_non-ideal_single-phase_fluid_flows_at_all_speeds_Non-ideal_single-phase_fluid_flow_solver). https://doi.org/10.1002/fld.4512
-   * [Kraposhin MV, Strijhak SV, Bovtrikova A Adaptation of Kurganov-Tadmor Numerical Scheme for Applying in Combination with the PISO Method in Numerical Simulation of Flows in a Wide Range of Mach Numbers. Procedia Computer Science. 2015;66:43-52](https://www.researchgate.net/publication/284913682_Adaptation_of_Kurganov-Tadmor_Numerical_Scheme_for_Applying_in_Combination_with_the_PISO_Method_in_Numerical_Simulation_of_Flows_in_a_Wide_Range_of_Mach_Numbers). https://doi.org/10.1016/j.procs.2015.11.007
-   * [Kraposhin, M., Kukharskii, A., Victoria, & Shevelev, A. (2022). An extension of the all-Mach number pressure-based solution framework for numerical modelling of two-phase flows with interface. Industrial Processes and Technologies, 2(3(5), 6–27. ](https://www.researchgate.net/publication/365897832_An_extension_of_the_all-Mach_number_pressure-based_solution_framework_for_numerical_modelling_of_two-phase_flows_with_interface) https://doi.org/10.37816/2713-0789-2022-2-3(5)-6-27
+   * Regarding one-phase and arbitrary EoS simulations, [Kraposhin MV, Banholzer M, Pfitzner M, Marchevsky IK. A hybrid pressure‐based solver for nonideal single‐phase fluid flows at all speeds. Int J Numer Meth Fluids. 2018;88:79–99](https://www.researchgate.net/publication/325025590_A_hybrid_pressure-based_solver_for_non-ideal_single-phase_fluid_flows_at_all_speeds_Non-ideal_single-phase_fluid_flow_solver). https://doi.org/10.1002/fld.4512
+   * Regarding the main princinples of hybrid central solvers, [Kraposhin MV, Strijhak SV, Bovtrikova A. Adaptation of Kurganov-Tadmor Numerical Scheme for Applying in Combination with the PISO Method in Numerical Simulation of Flows in a Wide Range of Mach Numbers. Procedia Computer Science. 2015;66:43-52](https://www.researchgate.net/publication/284913682_Adaptation_of_Kurganov-Tadmor_Numerical_Scheme_for_Applying_in_Combination_with_the_PISO_Method_in_Numerical_Simulation_of_Flows_in_a_Wide_Range_of_Mach_Numbers). https://doi.org/10.1016/j.procs.2015.11.007
+   * For recent VoF hybrid central solvers for compressible 2-phase problems [Kraposhin, M., Kukharskii, A., Victoria, & Shevelev, A. (2022). An extension of the all-Mach number pressure-based solution framework for numerical modelling of two-phase flows with interface. Industrial Processes and Technologies, 2(3(5), 6–27. ](https://www.researchgate.net/publication/365897832_An_extension_of_the_all-Mach_number_pressure-based_solution_framework_for_numerical_modelling_of_two-phase_flows_with_interface) https://doi.org/10.37816/2713-0789-2022-2-3(5)-6-27
+   * For multicomponent simulations and/or coupled with particles motions [Melnikova V., Epikhin A & Kraposhin M. The Eulerian–Lagrangian Approach for the Numerical Investigation of an Acoustic Field Generated by a High-Speed Gas-Droplet Flow. Fluids 2021, 6(8), 274; https://doi.org/10.3390/fluids6080274](https://www.mdpi.com/2311-5521/6/8/274)
+   * For cases with 2-phase (or n-phase) homogeneous flows [Xu L., Li Y., Ma X., Guo H., Shuai S., Shevelev A. and Kraposhin M. A pressure-based hybrid framework for sub- and supersonic compressible two-phase flow with non-equilibrium phase change. Computers & Fluids, Volume 305, 2026](https://www.sciencedirect.com/science/article/abs/pii/S004579302500372X)
