@@ -80,9 +80,15 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2025 <<<<<  </p>
 | Title | Description |
 |------|-------------|
+<<<<<<< HEAD
 |[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015): **Article**| --- |
 |[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/shock-train-pattern.png)|
 |[Application of Singular Value Decomposition and Autoencoder for Supersonic Flow over Backward Facing Step](https://avestia.com/FFHMT2025_Proceedings/files/paper/FFHMT_170.pdf): **Article**|![Four singular vectors for u-component at the final time step](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-33.png)|
+=======
+|[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015)| --- |
+|[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/image001.png)|
+|[Application of Singular Value Decomposition and Autoencoder for Supersonic Flow over Backward Facing Step](https://avestia.com/FFHMT2025_Proceedings/files/paper/FFHMT_170.pdf)|![Four singular vectors for u-component at the final time step](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-33.png)|
+>>>>>>> 52454674baa4b3fc4f8133171b5ecbca52b626ac
 |[Assessment of Multi-Fidelity Tools for the Aeropropulsion Analysis of a Small-Scale Supersonic Unmanned Aerial Vehicle](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6): **MSc thesis**|![MUFASA B. Adapted from(Fyfe, 2025)](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-23.png)|
 |[Assessment of Turbulence Modelling for Compressibility Effects in Ejector Ramjet Applications](https://ucalgary.scholaris.ca/items/771b2a53-0587-4fb6-a3b5-ed95a4fd87b6) **MSc thesis**|![The distribution of turbulent kinetic energy field along the mixing tube](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/2026-01-01_15-28.png)|
 |[Supersonic Combustion of Ethylene in a Pylon-Cavity Configuration with Curved Pylons](https://doi.org/10.1080/00102202.2025.2491102): **Article**| --- |
