@@ -80,7 +80,7 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2025 <<<<<  </p>
 | Title | Description |
 |------|-------------|
-|[Numerical Investigation of Cylindrical Water Droplets Subjected to Air Shock Loading at a High Weber Number](https://www.mdpi.com/2311-5521/10/4/81)|![Spanwise tandem configuration: numerical Schlieren contours](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/fluids-10-00081-g016)|
+|[Numerical Investigation of Cylindrical Water Droplets Subjected to Air Shock Loading at a High Weber Number](https://www.mdpi.com/2311-5521/10/4/81)|![Spanwise tandem configuration: numerical Schlieren contours](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/fluids-10-00081-g016.png)|
 |[CFD Prediction of Tandem Water Columns Aerobreakup Using Open-Source Codes](https://link.springer.com/chapter/10.1007/978-3-031-97000-9_3): **Article**| --- |
 |[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015)| --- |
 |[Visual and Quantitative Assessment of OpenFOAM Solver Accuracy for Simulating Oblique Shock Train](http://sv-journal.org/2025-4/02/): **Article**|![The flow pattern in confining channel](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/shock-train-pattern.png)|
