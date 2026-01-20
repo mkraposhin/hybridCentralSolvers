@@ -1,4 +1,0 @@
-SOURCE = \
-twoPhaseMixingCentralFoam.C \
-
-# sources

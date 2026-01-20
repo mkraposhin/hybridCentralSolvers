@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "centralMULES.C": "cpp",
+        "compressibleTwoPhaseMixture.C": "cpp",
+        "compressibleTwoPhaseMixtureThermo.C": "cpp",
+        "vofTwoPhaseCentralFoam.C": "cpp",
+        "vofTwoPhaseCentralFoamEqns.C": "cpp",
+        "vofTwoPhaseCentralFoamTerms.C": "cpp",
+        "pimpleCentralDyMFoam.C": "cpp",
+        "interTwoPhaseCentralFoamEqns.C": "cpp",
+        "interTwoPhaseCentralFoam.C": "cpp",
+        "interTwoPhaseCentralFoamTerms.C": "cpp",
+        "rhoPimpleCentralFoam.C": "cpp"
+    }
+}
