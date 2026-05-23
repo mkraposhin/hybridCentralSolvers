@@ -72,6 +72,7 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2026 <<<<<  </p>
 | Title | Description |
 |------|-------------|
+|Evolution Mechanism of flash-boiling-induced shock waves and regulation of jet-to-jet interactions in high-pressure jets: **PhD Thesis**| --- |
 |[Towards efficient wide-speed-range combustion simulation: An ANN-FGM model and its validation](https://www.sciencedirect.com/science/article/abs/pii/S1270963826002762): **Article**| --- |
 |[Performance Impacts of Preheating the Primary Fuel Jet of an Ejector Ramjet](https://arc.aiaa.org/doi/abs/10.2514/1.B40070): **Article**| --- |
 |[A Review of Convective Schemes Used for Detonation Simulations in OpenFOAM After a Decade of Development](https://www.mdpi.com/2075-1680/15/4/282): **Article**|![ Typical detonation at different instants in time](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/axioms-15-00282-g002.png)|
