@@ -72,7 +72,7 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2026 <<<<<  </p>
 | Title | Description |
 |------|-------------|
-|Numerical analysis of a novel intake concept for a transonic air-breathing propulsion system: **PhD Thesis**||
+|Numerical analysis of a novel intake concept for a transonic air-breathing propulsion system: **PhD Thesis**| --- |
 |Evolution Mechanism of flash-boiling-induced shock waves and regulation of jet-to-jet interactions in high-pressure jets: **PhD Thesis**| --- |
 |[Towards efficient wide-speed-range combustion simulation: An ANN-FGM model and its validation](https://www.sciencedirect.com/science/article/abs/pii/S1270963826002762): **Article**| --- |
 |[Performance Impacts of Preheating the Primary Fuel Jet of an Ejector Ramjet](https://arc.aiaa.org/doi/abs/10.2514/1.B40070): **Article**| --- |
