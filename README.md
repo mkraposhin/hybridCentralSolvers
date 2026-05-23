@@ -80,6 +80,10 @@ If you want to see your research in this list, please write to [Issues](https://
 ## <p align="center"> >>>>> 2025 <<<<<  </p>
 | Title | Description |
 |------|-------------|
+|[Towards efficient wide-speed-range combustion simulation: An ANN-FGM model and its validation](https://www.sciencedirect.com/science/article/abs/pii/S1270963826002762): **Article**| --- |
+|[Performance Impacts of Preheating the Primary Fuel Jet of an Ejector Ramjet](https://arc.aiaa.org/doi/abs/10.2514/1.B40070): **Article**| --- |
+|[A Review of Convective Schemes Used for Detonation Simulations in OpenFOAM After a Decade of Development](https://www.mdpi.com/2075-1680/15/4/282): **Article**|![ Typical detonation at different instants in time](axioms-15-00282-g002.png)|
+|[THE ADAPTATION OF IMPROVED NUMERICAL SCHEMES FOR PRESSURE BASED COMPRESSIBLE SOLVER BASED ON OPENFOAM](https://cdn.apub.kr/journalsite/sites/kscfe/2026-031-01/N0500310103/N0500310103.pdf): **Article**|![Pressure contours](kim-pressure-contours.png)|
 |[Numerical Investigation of Cylindrical Water Droplets Subjected to Air Shock Loading at a High Weber Number](https://www.mdpi.com/2311-5521/10/4/81)|![Spanwise tandem configuration: numerical Schlieren contours](https://github.com/mkraposhin/hybridCentralSolvers/blob/master/Figs/fluids-10-00081-g016.png)|
 |[CFD Prediction of Tandem Water Columns Aerobreakup Using Open-Source Codes](https://link.springer.com/chapter/10.1007/978-3-031-97000-9_3): **Article**| --- |
 |[Performance evaluation of RANS turbulence model coupled with pressure-based solver for supersonic flow](https://doi.org/10.1063/5.0286015)| --- |
